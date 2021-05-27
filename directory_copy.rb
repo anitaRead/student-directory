@@ -24,10 +24,13 @@ def print(students)
   # students.each_with_index { |student, index| puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)" }
   
   # Print only students beginning with S
-  s = students.select { |student| student[:name][0] == "s" }
-  puts "Students beginning with S: "
-  s.each_with_index { |student, i| puts "#{i + 1}. #{student[:name]}"}
+  # s_students = students.select { |student| student[:name][0] == "s" }
+  # puts "Students beginning with S: "
+  # s_students.each_with_index { |student, i| puts "#{i + 1}. #{student[:name]}"}
 
+  # Print only students whose name is shorter than 12 words 
+  short_names = students.select { |student| student[:name].length < 12 }
+  short_names.each_with_index { |student, i| puts "#{i + 1}. #{student[:name]}" }
   
 end
 
