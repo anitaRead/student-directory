@@ -1,26 +1,26 @@
 def input_students
   puts "Please enter the names of students"
   puts "To finish, just hit return twice" 
-  name = gets.chomp 
+  name = gets.strip 
 
   students = []
 
   while !name.empty? do
     puts "Which cohort is he/she in?"
-    cohort = gets.chomp.to_sym
+    cohort = gets.strip.to_sym
     if cohort.length == 0
       cohort = :november
     end
     puts "What country is he/she from?"
-    country = gets.chomp
+    country = gets.strip
     puts "What are his/her hobbies?"
-    hobbies = gets.chomp
+    hobbies = gets.strip
 
     students << { name: name, cohort: cohort, country: country, hobbies: hobbies }
     
     puts students.count > 1 ? "Now we have #{students.count} students" : "Now we have #{students.count} student"
     puts "Enter another student"
-    name = gets.chomp
+    name = gets.strip
   end
 
   students
@@ -57,7 +57,7 @@ def print(students)
 end
 
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students"
+  puts students.count > 1 ? "Overall, we have #{students.count} great students" : "Overall, we have #{students.count} great student"
 end
 
 
