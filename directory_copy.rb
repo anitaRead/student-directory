@@ -36,12 +36,12 @@ def print(students)
   # students.each_with_index { |student, index| puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)" }
   
   # Print all students with a while loop
-  i = 0
-  while i < students.length
-    puts "#{i + 1}. #{students[i][:name]} (#{students[i][:cohort]} cohort) 
-    country: #{students[i][:country]}, hobbies: #{students[i][:hobbies]}"
-    i += 1 
-  end 
+  # i = 0
+  # while i < students.length
+  #   puts "#{i + 1}. #{students[i][:name]} (#{students[i][:cohort]} cohort) 
+  #   country: #{students[i][:country]}, hobbies: #{students[i][:hobbies]}"
+  #   i += 1 
+  # end 
 
   # Print only students beginning with S
   # s_students = students.select { |student| student[:name][0] == "s" }
@@ -52,6 +52,8 @@ def print(students)
   # short_names = students.select { |student| student[:name].length < 12 }
   # short_names.each_with_index { |student, i| puts "#{i + 1}. #{student[:name]}" }
   
+  # Print all students in November cohort
+  students.map { |student| puts student if student[:cohort] == :november }
 end
 
 def print_footer(students)
