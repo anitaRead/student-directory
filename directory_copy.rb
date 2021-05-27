@@ -6,7 +6,7 @@ def input_students
   students = []
 
   while !name.empty? do
-    students << { name: name, cohort: :november }
+    students << { name: name, cohort: :November }
     puts "Now we have #{students.count} students"
     name = gets.chomp
   end
@@ -23,14 +23,21 @@ def print(students)
   # Print students with numbered bullet points
   # students.each_with_index { |student, index| puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)" }
   
+  i = 0
+
+  while i < students.length
+    puts "#{i + 1}. #{students[i][:name]} (#{students[i][:cohort]} cohort)"  
+    i += 1 
+  end 
+
   # Print only students beginning with S
   # s_students = students.select { |student| student[:name][0] == "s" }
   # puts "Students beginning with S: "
   # s_students.each_with_index { |student, i| puts "#{i + 1}. #{student[:name]}"}
 
   # Print only students whose name is shorter than 12 words 
-  short_names = students.select { |student| student[:name].length < 12 }
-  short_names.each_with_index { |student, i| puts "#{i + 1}. #{student[:name]}" }
+  # short_names = students.select { |student| student[:name].length < 12 }
+  # short_names.each_with_index { |student, i| puts "#{i + 1}. #{student[:name]}" }
   
 end
 
