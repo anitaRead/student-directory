@@ -18,7 +18,7 @@ def input_students
 
     students << { name: name, cohort: cohort, country: country, hobbies: hobbies }
     
-    puts "Now we have #{students.count} students"
+    puts students.count > 1 ? "Now we have #{students.count} students" : "Now we have #{students.count} student"
     puts "Enter another student"
     name = gets.chomp
   end
