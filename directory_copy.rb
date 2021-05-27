@@ -6,8 +6,15 @@ def input_students
   students = []
 
   while !name.empty? do
-    students << { name: name, cohort: :November }
+    puts "What country is he/she from?"
+    country = gets.chomp
+    puts "What are his/her hobbies?"
+    hobbies = gets.chomp
+
+    students << { name: name, cohort: :November, country: country, hobbies: hobbies }
+    
     puts "Now we have #{students.count} students"
+    puts "Enter another student"
     name = gets.chomp
   end
 
@@ -23,10 +30,11 @@ def print(students)
   # Print students with numbered bullet points
   # students.each_with_index { |student, index| puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)" }
   
+  # Print all students with a while loop
   i = 0
-
   while i < students.length
-    puts "#{i + 1}. #{students[i][:name]} (#{students[i][:cohort]} cohort)"  
+    puts "#{i + 1}. #{students[i][:name]} (#{students[i][:cohort]} cohort) 
+    country: #{students[i][:country]}, hobbies: #{students[i][:hobbies]}"  
     i += 1 
   end 
 
