@@ -6,12 +6,17 @@ def input_students
   students = []
 
   while !name.empty? do
+    puts "Which cohort is he/she in?"
+    cohort = gets.chomp.to_sym
+    if cohort.length == 0
+      cohort = :november
+    end
     puts "What country is he/she from?"
     country = gets.chomp
     puts "What are his/her hobbies?"
     hobbies = gets.chomp
 
-    students << { name: name, cohort: :November, country: country, hobbies: hobbies }
+    students << { name: name, cohort: cohort, country: country, hobbies: hobbies }
     
     puts "Now we have #{students.count} students"
     puts "Enter another student"
@@ -34,7 +39,7 @@ def print(students)
   i = 0
   while i < students.length
     puts "#{i + 1}. #{students[i][:name]} (#{students[i][:cohort]} cohort) 
-    country: #{students[i][:country]}, hobbies: #{students[i][:hobbies]}"  
+    country: #{students[i][:country]}, hobbies: #{students[i][:hobbies]}"
     i += 1 
   end 
 
