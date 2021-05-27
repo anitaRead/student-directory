@@ -20,7 +20,15 @@ def print_header
 end
 
 def print(students)
-  students.each { |student| puts "#{student[:name]} (#{student[:cohort]} cohort)" }
+  # Print students with numbered bullet points
+  # students.each_with_index { |student, index| puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)" }
+  
+  # Print only students beginning with S
+  s = students.select { |student| student[:name][0] == "s" }
+  puts "Students beginning with S: "
+  s.each_with_index { |student, i| puts "#{i + 1}. #{student[:name]}"}
+
+  
 end
 
 def print_footer(students)
