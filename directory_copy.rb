@@ -1,29 +1,29 @@
+@students = []
+
 def input_students
   puts "Please enter the names of students"
   puts "To finish, just hit return twice" 
-  name = gets.strip 
-
-  students = []
+  name = gets.chomp 
 
   while !name.empty? do
     puts "Which cohort is he/she in?"
-    cohort = gets.strip.to_sym
+    cohort = gets.chomp.to_sym
     if cohort.length == 0
       cohort = :november
     end
     puts "What country is he/she from?"
-    country = gets.strip
+    country = gets.chomp
     puts "What are his/her hobbies?"
-    hobbies = gets.strip
+    hobbies = gets.chomp
 
-    students << { name: name, cohort: cohort, country: country, hobbies: hobbies }
+    @students << { name: name, cohort: cohort, country: country, hobbies: hobbies }
     
-    puts students.count > 1 ? "Now we have #{students.count} students" : "Now we have #{students.count} student"
+    puts @students.count > 1 ? "Now we have #{@students.count} students" : "Now we have #{@students.count} student"
     puts "Enter another student"
-    name = gets.strip
+    name = gets.chomp
   end
 
-  students
+  @students
 end  
 
 def print_header
@@ -31,9 +31,9 @@ def print_header
   puts "-------------"
 end
 
-def print(students)
-  # Print students with numbered bullet points
-  # students.each_with_index { |student, index| puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)" }
+def print_students_list
+  # Print all students with numbered bullet points
+  @students.each_with_index { |student, index| puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)" }
   
   # Print all students with a while loop
   # i = 0
@@ -53,36 +53,45 @@ def print(students)
   # short_names.each_with_index { |student, i| puts "#{i + 1}. #{student[:name]}" }
   
   # Print all students in November cohort
-  students.map { |student| puts student if student[:cohort] == :november }
+  # @students.map { |student| puts student if student[:cohort] == :november }
 end
 
-def print_footer(students)
-  if students.count > 0 
-    puts students.count > 1 ? "Overall, we have #{students.count} great students" : "Overall, we have #{students.count} great student"
+def print_footer
+  if @students.count > 0 
+    puts @students.count > 1 ? "Overall, we have #{@students.count} great students" : "Overall, we have #{@students.count} great student"
+  end
+end
+
+def print_menu
+  # Print the menu and ask the user what to do
+  puts "1. Input the students"
+  puts "2. Show the students"
+  puts "9. Exit" 
+end
+
+def show_students
+  print_header
+  print_students_list
+  print_footer
+end
+
+def process(selection)
+  case selection
+  when "1"
+    @students = input_students
+  when "2"
+    show_students
+  when "9"
+    exit
+  else
+    puts "I don't know what you meant, try again"
   end
 end
 
 def interactive_menu
-  students = []
   while true do
-    # Print the menu and ask the user what to do
-    puts "1. Input the students"
-    puts "2. Show the students"
-    puts "9. Exit" 
-    selection = gets.chomp
-   
-    case selection
-    when "1"
-      students = input_students
-    when "2"
-      print_header
-      print(students)
-      print_footer(students)
-    when "9"
-      break 
-    else
-      puts "I don't know what you meant, try again"
-    end
+    print_menu
+    process(gets.chomp)
   end
 end
 
