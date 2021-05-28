@@ -57,7 +57,9 @@ def print(students)
 end
 
 def print_footer(students)
-  puts students.count > 1 ? "Overall, we have #{students.count} great students" : "Overall, we have #{students.count} great student"
+  if students.count > 0 
+    puts students.count > 1 ? "Overall, we have #{students.count} great students" : "Overall, we have #{students.count} great student"
+  end
 end
 
 
